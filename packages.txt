@@ -1,4 +1,3 @@
-com.google.android.webview \
 com.samsung.android.lool \
 com.google.android.apps.turbo \
 com.google.android.apps.tachyon \
