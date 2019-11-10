@@ -1,3 +1,4 @@
+com.sec.android.app.dexonpc \
 com.samsung.android.lool \
 com.google.android.apps.turbo \
 com.google.android.apps.tachyon \
