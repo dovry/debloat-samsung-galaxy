@@ -20,8 +20,8 @@ printf "Script Execution Time: $execution_time\n"
 if [ $removed = "0" ]; then
   printf "No bloat to remove!\n\n"
 else
-  printf "Removed $removed out of $lines packages\n"
+  printf "Removed %s out of %s packages\n" "$removed" "$lines"
 fi
 
 duration=$(echo "$(date +%s.%N) - $start" | bc)
-execution_time=`printf "%.2f seconds" $duration`
+execution_time=`printf "%.2f seconds" %s` $duration
