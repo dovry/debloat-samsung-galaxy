@@ -18,7 +18,6 @@ com.dsi.ant.plugins.antplus \
 com.android.egg \
 com.sec.android.easyonehand \
 com.sec.android.widgetapp.samsungapps \
-com.sec.android.app.launcher \
 com.samsung.android.mateagent \
 com.sec.android.easyMover.Agent \
 com.samsung.android.app.watchmanagerstub \
