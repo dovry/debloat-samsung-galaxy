@@ -3,7 +3,7 @@
 ## Requirements
 * [ADB](https://developer.android.com/studio/command-line/adb)
 * Android device
-* USB cable from PC to said device
+* A USB cable to connect the mobile device, or connect [wirelessly](https://stackoverflow.com/questions/14357705/adb-over-wireless)
 
 ## How to run it
 First, take a look through packages.txt, or look up what packages are installed on your device before running the script. A quick search usually returns an android enthusiast forum or blog with a list of bloatware.
