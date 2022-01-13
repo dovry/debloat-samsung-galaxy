@@ -1,27 +1,24 @@
-#!/bin/sh
-package_file=packages.txt
-logfile=adb.log
-start=$(date +%s.%N)
-packages=$(cat $package_file)
-lines=$(wc -l < $package_file)
-removed=0
+#!/usr/bin/env sh
 
-printf "\n*** Removing defined packages, please wait ***\n\n"
-printf "\n*** Starting new run ***\n\n\n" >> $logfile
+logfile="adb.log"
+start_time=$(date +%s)
+total=$(grep -c ^ packages.txt)
+disabled="0"
 
-for app in $packages; do
-  #adb uninstall --user 0 "$app" > /dev/null 2>&1 && removed="$((removed+1))"   # Removes output instead of putting it in log (potential -q (quiet mode) flag)
-  adb uninstall --user 0 "$app" >> $logfile && removed="$((removed+1))" # sends everything to $logfile, not very useful without line numbers or filename.
-done
+adb shell echo Device Connected
 
-printf "\n*** Finished ***\n" >> $logfile
+rm $logfile 2>/dev/null
 
-printf "Script Execution Time: $execution_time\n"
-if [ $removed = "0" ]; then
-  printf "No bloat to remove!\n\n"
+printf "\n*** Disabling Defined Packages, Please Wait ***\n\n"
+
+# Disable all packages in packages.txt and outputs to adb.log && get a line count of disabled apps
+xargs -l adb shell pm disable-user -k < packages.txt >> "$logfile" && disabled=$(wc -l < $logfile)
+
+end_time=$(date +%s)
+printf "Script Execution Time %s\n" "$((end_time - start_time))s"
+
+if [ "$disabled" = '0' ]; then
+    printf "No Bloat to Disable!\n\n"
 else
-  printf "Removed %s out of %s packages\n" "$removed" "$lines"
+    printf "Disabled %s\n" "$disabled out of ""$total"
 fi
-
-duration=$(echo "$(date +%s.%N) - $start" | bc)
-execution_time=`printf "%.2f seconds" %s` $duration
