@@ -1,3 +1,6 @@
+# UNMAINTAINED
+- I don't have an android at the moment, so I'm not willing to maintain this repo.
+
 # debloat-samsung-galaxy
 
 ## Requirements
